@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SPED ECD
+Name[pt_BR]=SPED ECD
+GenericName=Digital Accouting Bookkeeping (ECD) Validator
+GenericName[pt_BR]=Validador de Escrituração Contábil Digital (ECD)
+Exec=/usr/bin/contabilpva
+Icon=br.gov.serpro.sped.contabilpva.png
+Path=/opt/sped/contabil
+Terminal=false
+StartupNotify=true
+Categories=Office;Finance;

@@ -1,0 +1,45 @@
+#!/bin/bash
+
+[ -f /etc/default/sped-ecf ] && \
+	. /etc/default/sped-ecf
+
+INTERNAL_JRE=${INTERNAL_JRE:=true}
+
+APP_HOME=/opt/sped/ecf
+
+DISTRO_ID=$(python3 -m distro | awk '/Name:/ {print $2}')
+case $DISTRO_ID in
+        Ubuntu)
+                JAVA_PKG=openjdk-8-jre-headless
+                JAVA=$(readlink -es $(dpkg -L $JAVA_PKG \
+			| awk '/bin\/java$/{print $1;exit}'))
+        ;;
+        CentOS|Fedora|RHEL)
+                JAVA_PKG=java-1.8.0-openjdk-headless
+                JAVA=$(readlink -es $(rpm -ql $JAVA_PKG \
+			| awk '/bin\/java$/{print $1;exit}'))
+        ;;
+        *)
+		INTERNAL_JRE=true
+        ;;
+esac
+
+if [ "$INTERNAL_JRE" == "true" ]; then
+	JAVA_BIN=$(find $APP_HOME/jre -name java)
+	JAVA=$(readlink -es $(echo $JAVA_BIN \
+		| awk '/bin\/java$/{print $1;exit}'))
+fi
+
+export _JAVA_OPTIONS="-Xmx1024m
+  -Dfile.encoding=ISO-8859-1
+  -Dawt.useSystemAAFontSettings=on 
+  -Dswing.aatext=true 
+  -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel 
+  -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel
+  -Djdk.gtk.version=3
+  -Djavax.accessibility.assistive_technologies=' '"
+
+cd $APP_HOME
+exec $JAVA -jar $APP_HOME/irpjpva.jar || exit 1
+
+exit 0

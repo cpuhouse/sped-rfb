@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SPED Fiscal
+Name[pt_BR]=SPED Fiscal
+GenericName=Digital Tax Bookkeeping (EFD) Generator - ICMS/IPI 
+GenericName[pt_BR]=Gerador de Escrituração Fiscal Digital (EFD) - ICMS/IPI
+Exec=/usr/bin/fiscalpva
+Icon=br.gov.serpro.sped.fiscalpva
+Path=/opt/sped/fiscal
+Terminal=false
+StartupNotify=true
+Categories=Office;Finance;

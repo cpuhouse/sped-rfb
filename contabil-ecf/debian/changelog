@@ -1,0 +1,17 @@
+sped-ecf (7.0.14) stable; urgency=low
+
+  * Version 7.0.14
+
+ -- Cpuhouse Packaging System <packaging@cpuhouse.com.br>  Sat, 04 Dec 2021 05:45:25 -0300
+
+sped-ecf (7.0.13) stable; urgency=low
+
+  * Release 7.0.13
+
+ -- Cpuhouse Packaging System <packaging@cpuhouse.com.br>  Fri, 17 Sep 2021 13:29:22 -0300
+
+sped-ecf (6.0.9) stable; urgency=low
+
+  * Initial release.
+
+ -- Cpuhouse Packaging System <packaging@cpuhouse.com.br>  Fri, 04 Dec 2020 01:29:01 -0300

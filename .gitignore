@@ -1,0 +1,12 @@
+*.log
+*.deb
+*.tar
+*.gz
+*.xz
+*.substvars
+*.dsc
+*.changes
+*.build*
+.debhelper/
+build/
+dist/

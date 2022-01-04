@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SPED EFD Taxes
+Name[pt_BR]=SPED Contribuições EFD
+GenericName=Digital Tax Bookkeeping (EFD) Generator - PIS/COFINS
+GenericName[pt_BR]=Gerador de Escrituração Fiscal Digital (EFD) - PIS/COFINS
+Exec=/usr/bin/piscofinspva
+Icon=br.gov.serpro.sped.piscofinspva
+Path=/opt/sped/piscofins
+Terminal=false
+StartupNotify=true
+Categories=Office;Finance;

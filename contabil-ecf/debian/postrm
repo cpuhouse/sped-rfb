@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+# Delete app dir for any of remove, abort-install and disappear operation
+if [ "$1" = "remove" -o "$1" = "abort-install" -o "$1" = "disappear" ]; then
+	rm -rf /opt/sped/ecf > /dev/null 2>&1
+fi
+
+#DEBHELPER#
+
+exit 0

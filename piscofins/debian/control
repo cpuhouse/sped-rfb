@@ -1,0 +1,22 @@
+Source: sped-piscofins
+Maintainer: Cpuhouse Packaging System <packaging@cpuhouse.com.br>
+Section: libs
+Priority: optional
+Build-Depends: debhelper (>=10), git-annex, openjdk-8-jre-headless
+Standards-Version: 4.0.0
+
+package: sped-piscofins
+Section: database
+Architecture: any
+Depends: ${misc:Depends}, 
+         python3-distro,
+         openjdk-8-jre-headless,
+         desktop-file-utils,
+         libc6:i386,
+         debconf (>= 0.5.00)
+Suggests: openjdk-8-jre-headless
+Priority: optional
+Description: Brazilian SPED EFD-Taxes (PIS/Cofins) generator
+ This package provides the generator for the Digital Tax Bookkeeping
+ of taxes levied on Revenue (EFD PIS/Cofins) and is part of the 
+ Brazilian Public Digital Bookkeeping System (SPED).

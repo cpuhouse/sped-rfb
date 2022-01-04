@@ -1,0 +1,7 @@
+#!/bin/sh
+
+url="https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal"
+version=$(head -1 debian/changelog | awk -F"[()]" '{print $2}')
+
+rm -f sources/PVA_EFD_linux-*
+git annex addurl --file sources/PVA_EFD_linux-${version}_x64.jar $url/PVA_EFD_linux-${version}_x64.jar

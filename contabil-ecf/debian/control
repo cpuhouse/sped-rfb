@@ -1,0 +1,25 @@
+Source: sped-ecf
+Maintainer: Cpuhouse Packaging System <packaging@cpuhouse.com.br>
+Section: libs
+Priority: optional
+Build-Depends: debhelper (>=10), git-annex, openjdk-8-jre-headless
+Standards-Version: 4.0.0
+
+package: sped-ecf
+Section: database
+Architecture: any
+Provides: sped-contabil-ecf
+Replaces: sped-contabil-ecf
+Depends: ${misc:Depends}, 
+         python3-distro,
+         desktop-file-utils,
+         libc6:i386,
+         lib32gcc1,
+         libcrypt1:i386,
+         debconf (>= 0.5.00)
+Suggests: openjdk-8-jre-headless
+Priority: optional
+Description: Brazilian SPED ECF validator
+ This package provides the SPED validator for Fiscal
+ Accounting Bookkeeping (ECF) and is part of the Brazilian 
+ Public Digital Bookkeeping System (SPED).
