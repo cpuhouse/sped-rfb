@@ -28,7 +28,7 @@ A Receita Federal do Brasil fornece aplicativos para a geração e validação d
 |Sped Fiscal         |Gerador de EFD ICMS/IPI              | 2.8.2   |DEB          |
 |Sped Contribuições  |Gerador de EFD PIS/COFINS            | 5.0.2   |DEB          |
 |Sped Contábil       |Validador de ECD                     | 8.0.9   |DEB          |
-|Sped Contábil ECF   |Validador de ECF                     | 7.0.14  |DEB          |
+|Sped Contábil ECF   |Validador de ECF                     | 8.0.2   |DEB          |
 |ReceitaNet          |Transmissor de declarações IRPJ/IRPF | 1.24    |N/A          |
 |ReceitaNetBX        |Transmissor de arquivos das bases RFB| 1.9.15  |N/A          |
 |ReceitaNetBX Serviço|Serviço do ReceitaNetBX              | 1.9.16  |N/A          |
