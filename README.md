@@ -25,29 +25,27 @@ A Receita Federal do Brasil fornece aplicativos para a geração e validação d
 
 |Componente          |Descrição                            |Versão   |Pacotes      |
 |--------------------|-------------------------------------|---------|-------------|
-|Sped Fiscal         |Gerador de EFD ICMS/IPI              | 2.8.2   |DEB          |
+|Sped Fiscal         |Gerador de EFD ICMS/IPI              | 2.8.4   |DEB          |
 |Sped Contribuições  |Gerador de EFD PIS/COFINS            | 5.0.2   |DEB          |
-|Sped Contábil       |Validador de ECD                     | 9.0.0   |DEB          |
+|Sped Contábil       |Validador de ECD                     | 9.0.1   |DEB          |
 |Sped Contábil ECF   |Validador de ECF                     | 8.0.2   |DEB          |
-|ReceitaNet          |Transmissor de declarações IRPJ/IRPF | 1.24    |N/A          |
+|ReceitaNet¹         |Transmissor de declarações IRPJ/IRPF | 1.24    |DEB|RPM|JAR  |
 |ReceitaNetBX        |Transmissor de arquivos das bases RFB| 1.9.15  |N/A          |
 |ReceitaNetBX Serviço|Serviço do ReceitaNetBX              | 1.9.16  |N/A          |
 
+[¹ Pacotes fornecidos pela RFB](https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanet)
 
-
-## 💻 Pré-requisitos
+## Pré-requisitos
 
 Antes de começar, verifique se o seu computador atende aos seguintes requisitos:
 * Possui uma versão 64 bits do GNU/Linux instalada: `x86_64, amd64`. Para saber qual a sua arquitetura execute o seguinte comando:
 	```
 	uname -a
 	```
-* O seu sistema está possui uma interface gráfica instalada: `KDE Plasma,Gnome,XFCE, etc.` 
+* O seu sistema está possui uma interface gráfica instalada: `KDE Plasma, Gnome, XFCE, etc.` 
 * O seu sistema GNU/Linux está executando uma distribuição compatível:
-	* [Debian](https://debian.org)(ainda não suportado)
-	* [Ubuntu](https://ubuntu.com)(apenas 18.04 LTS / 20.04 LTS)
-	* [Linux Mint](https://linuxmint.com)(apenas versões baseadas no Ubuntu LTS)
-	* [Pop!_OS](https://pop.system76.com)(apenas versões baseadas no Ubuntu LTS)
+	* [Debian](https://debian.org)(apenas instalação manual de pacotes - não testado)
+	* [Ubuntu e derivados](https://ubuntu.com)(apenas 18.04 LTS / 20.04 LTS)
 	* [Fedora](https://getfedora.org)(ainda não suportado)
 	* [Rocky Linux](https://rockylinux.org)(ainda não suportado)
 	* [Alma Linux](https://almalinux.org)(ainda não suportado)
@@ -60,23 +58,23 @@ ou
 * O seu sistema suporta AppImage (ainda não implementado)
 * O seu sistema suporta Flatpak (ainda não implementado)
 
-## 🚀 Instalando os aplicativos SPED
+## Instalando os aplicativos SPED
 Para instalar os aplicativos do SPED em sua máquina con GNU/Linux, siga estas etapas:
 
-Debian/Ubuntu/Mint/Pop!_OS:
+Ubuntu e derivados:
 ```
 pushd /tmp; wget -q -O cpuhouse-repo.deb https://s.cpuhouse.cloud/cpuhrel-<suite> && dpkg -i cpuhouse-repo.deb; popd
 sudo apt update && apt install sped-*
 ```
-Trocar `<suite>` pelo codename da versão do Ubuntu/Debian que você usa. No momento apenas as seguintes suites estão disponíveis:
+Trocar `<suite>` pelo codename da versão do Ubuntu/derivado que você usa. No momento apenas as seguintes suites estão disponíveis:
 
 * `focal - Ubuntu 20.04 LTS`
 * `bionic - Ubuntu 18.04 LTS`
 
+<!--
+Fedora/RHEL e derivados (Rocky/Alma/CentOS/OL/AL):
 
-Fedora/Rocky/Alma/CentOS/OL/AL/RHEL:
-
-Caso você utilize o Fedora ou uma versão do Rocky/Alma/Oracle Linux/CentOS/RHEL que já possua o dnf instalado execute os seguintes comandos em seu terminal:
+Caso você utilize o Fedora ou uma versão do Rocky/Alma/CentOS/OL/AL/RHEL que já possua o dnf instalado execute os seguintes comandos em seu terminal:
 ```
 sudo dnf install yum-plugin-copr
 sudo dnf copr enable cpuhouse/sped
@@ -88,8 +86,9 @@ sudo yum install yum-plugin-copr
 sudo dnf copr enable cpuhouse/sped
 sudo dnf install sped-*
 ```
+-->
 
-## 📫 Como Contribuir
+## Como Contribuir
 Para contribuir com este projeto, siga estas etapas:
 
 1. Bifurque este repositório. Você pode fazer isso clicando no botão ![GitHub fork](https://img.shields.io/github/forks/cpuhouse/sped-rfb?label=Fork&?style=for-the-badge)
@@ -100,7 +99,8 @@ Para contribuir com este projeto, siga estas etapas:
 
 Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-## 🤝 Colaboradores
+<!--
+## Colaboradores
 
 Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
@@ -116,14 +116,14 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
    </tr>
 </table>
+-->
 
-
-## 😄 Seja um dos contribuidores<br>
+## Seja um contribuidor<br>
 
 Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contribuir.
 
 ## 📝 Licença
 
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE) para mais detalhes.
+Esse projeto está sob a licença GPLv3 ou superior. Veja o arquivo [LICENÇA](LICENSE) para mais detalhes.
 
 [⬆ Voltar ao topo](#SPED-RFB)<br>

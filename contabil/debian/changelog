@@ -1,3 +1,9 @@
+sped-contabil (9.0.1) stable; urgency=low
+
+  * version 9.0.1
+
+ -- Cpuhouse Packaging System <packaging@cpuhouse.com.br>  Thu, 07 Apr 2022 02:34:50 -0300
+
 sped-contabil (9.0.0) stable; urgency=low
 
   * version 9.0.0
