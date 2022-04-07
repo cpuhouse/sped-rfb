@@ -44,8 +44,9 @@ Antes de começar, verifique se o seu computador atende aos seguintes requisitos
 	```
 * O seu sistema está possui uma interface gráfica instalada: `KDE Plasma, Gnome, XFCE, etc.` 
 * O seu sistema GNU/Linux está executando uma distribuição compatível:
-	* [Debian](https://debian.org)(apenas instalação manual de pacotes - não testado)
 	* [Ubuntu e derivados](https://ubuntu.com)(apenas 18.04 LTS / 20.04 LTS)
+<!--
+	* [Debian](https://debian.org)(apenas instalação manual de pacotes - não testado)
 	* [Fedora](https://getfedora.org)(ainda não suportado)
 	* [Rocky Linux](https://rockylinux.org)(ainda não suportado)
 	* [Alma Linux](https://almalinux.org)(ainda não suportado)
@@ -57,6 +58,7 @@ Antes de começar, verifique se o seu computador atende aos seguintes requisitos
 ou
 * O seu sistema suporta AppImage (ainda não implementado)
 * O seu sistema suporta Flatpak (ainda não implementado)
+-->
 
 ## Instalando os aplicativos SPED
 Para instalar os aplicativos do SPED em sua máquina con GNU/Linux, siga estas etapas:
