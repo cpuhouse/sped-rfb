@@ -79,7 +79,6 @@ clean:
 	rm -rf build/ \
 	       dist/ \
 	       MANIFEST \
-	       installer.properties \
 	       $(PROJECT).spec && \
 	dh_clean || :
 
