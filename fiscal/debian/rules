@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-
+SHELL=/bin/bash
 INSTALL=install -v -D -oroot -groot -m0644
 INSTALL_D=install -v -d -oroot -groot -m0755
 RM_RF=rm -rf
@@ -7,7 +7,7 @@ RM_RF=rm -rf
 PROJECT=$(shell grep -m1 -iE '^Source:' debian/control | awk '{print $$2}')
 VERSION=$(shell grep -m1 -iE "^$(PROJECT)\ \(.*\)" debian/changelog | cut -d\( -f2 | cut -d\) -f1)
 SOURCEJAR=sources/PVA_EFD_linux-$(VERSION)_$(SRC_ARCH).jar
-APPNAME=$(shell p=$(PROJECT); echo $${p\#\#*-};)
+APPNAME=$(shell p=$(PROJECT); echo $${p##*-};)
 APPBIN=fiscalpva
 
 JAVA=$(shell readlink -es `which java`)
