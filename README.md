@@ -23,15 +23,15 @@ O projeto é composto pelas seguintes bases:
 
 A Receita Federal do Brasil fornece aplicativos para a geração e validação de arquivos de transferência eletrônica para as bases do SPED de acordo com a tabela a seguir:
 
-|Componente          |Descrição                            |Versão   |Pacotes      |
-|--------------------|-------------------------------------|---------|-------------|
-|Sped Fiscal         |Gerador de EFD ICMS/IPI              | 2.8.4   |DEB          |
-|Sped Contribuições  |Gerador de EFD PIS/COFINS            | 5.0.2   |DEB          |
-|Sped Contábil       |Validador de ECD                     | 9.0.1   |DEB          |
-|Sped Contábil ECF   |Validador de ECF                     | 8.0.2   |DEB          |
-|ReceitaNet¹         |Transmissor de declarações IRPJ/IRPF | 1.24    |DEB|RPM|JAR  |
-|ReceitaNetBX        |Transmissor de arquivos das bases RFB| 1.9.15  |N/A          |
-|ReceitaNetBX Serviço|Serviço do ReceitaNetBX              | 1.9.16  |N/A          |
+|Componente           |Descrição                            |Versão   |Pacotes      |
+|---------------------|-------------------------------------|---------|-------------|
+|Sped Fiscal          |Gerador de EFD ICMS/IPI              | 2.8.4   |DEB          |
+|Sped Contribuições   |Gerador de EFD PIS/COFINS            | 5.0.2   |DEB          |
+|Sped Contábil        |Validador de ECD                     | 9.0.4   |DEB          |
+|Sped Contábil ECF    |Validador de ECF                     | 8.0.4   |DEB          |
+|ReceitaNet¹          |Transmissor de declarações IRPJ/IRPF | 1.24    |DEB|RPM|JAR  |
+|ReceitaNetBX¹        |Transmissor de arquivos das bases RFB| 1.9.18  |JAVA SFX     |
+|ReceitaNetBX Serviço¹|Serviço do ReceitaNetBX              | 1.9.18  |JAVA SFX     |
 
 [¹ Pacotes fornecidos pela RFB](https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanet)
 
