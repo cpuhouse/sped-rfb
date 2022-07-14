@@ -3,7 +3,6 @@
 %global pkg_release	1
 
 %define appname         __APPNAME__
-#define _sourcedir      #(echo ${PWD}/dist)
 
 Name:           	%{pkg_name}
 Version:        	%{pkg_version}
@@ -14,6 +13,7 @@ License:        	GPL-2+
 URL:            	http://sped.rfb.gov.br/
 
 Source0:  		%{pkg_name}_%{pkg_version}.tar.xz
+Source1:		Makefile
 
 AutoReq:		no
 BuildArch:		x86_64
@@ -42,7 +42,7 @@ rm -rf %{name}-%{version} || find %{name}-%{version}/ -exec chmod u+w {} \+ -del
 git config --global init.defaultBranch master
 git init && git annex init
 
-%autosetup -c
+%autosetup -c -a 1
 make clean-all
 make installer.properties
 make prep
