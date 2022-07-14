@@ -37,9 +37,9 @@ all:
 	@echo
 
 builddeps:
-	test ! -f /usr/bin/dh && $(PM) -y install debhelper
-	test ! -f /usr/bin/dch && $(PM) -y install devscripts
-	test ! -f /usr/bin/dpkg-source && $(PM) -y install dpkg-source
+	test -f /usr/bin/dh || $(PM) -y install debhelper
+	test -f /usr/bin/dch || $(PM) -y install devscripts
+	test -f /usr/bin/dpkg-source || $(PM) -y install dpkg-source
 
 installer.properties: clean
 	rm -rf installer.properties
