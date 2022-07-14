@@ -21,12 +21,14 @@ BuildConflicts: 	%{name}
 BuildRequires:		debhelper > 10
 BuildRequires:		devscripts
 BuildRequires:		git-annex
-BuildRequires:		java-11-openjdk-headless
+BuildRequires:		java-1.8.0-openjdk-headless
 
 Conflicts:		mariadb-server
 Provides:		PVA_EFD = %{version}
 Requires:		python3-distro
 Requires:		desktop-file-utils
+Requires:		libnsl.i686 
+Requires:		libxcrypt-compat.i686
 
 %description
 This package provides the generator for the Digital Tax Bookkeeping

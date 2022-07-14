@@ -65,7 +65,8 @@ spec:
 	> $(PROJECT).spec
 
 srpm: source spec
-	rpmbuild --define="_srcrpmdir ./dist/" -bs $(PROJECT).spec
+	test -z "$(outdir)" && outdir="./dist/"; \
+	rpmbuild --define="_srcrpmdir $${outdir}" -bs $(PROJECT).spec
 
 build-rpm:
 	@echo "Not implemented yet"
