@@ -18,6 +18,8 @@ APPNAME=$(shell p=$(PROJECT); echo $${p##*-};)
 BUILDIR=$(CURDIR)/build
 DESTDIR=/opt/sped/$(APPNAME)
 
+PM=$(shell which dnf yum apt 2>/dev/null | head -1)
+
 all:
 	@echo
 	@echo "Makefile for $(PROJECT) - version $(VERSION)"
@@ -33,6 +35,11 @@ all:
 	@echo " make spec      : create spec file for rpm building"
 	@echo " make srpm      : create rpm source ready for build"
 	@echo
+
+builddeps:
+	test ! -f /usr/bin/dh && $(PM) -y install debhelper
+	test ! -f /usr/bin/dch && $(PM) -y install devscripts
+	test ! -f /usr/bin/dpkg-source && $(PM) -y install dpkg-source
 
 installer.properties: clean
 	rm -rf installer.properties
@@ -76,7 +83,7 @@ build-deb: installer.properties
 	SRC_ARCH=$(SRC_ARCH) DESTDIR=$(DESTDIR) \
 		 dpkg-buildpackage -i -I -rfakeroot -a $(BUILD_ARCH)
 
-clean:
+clean: builddeps
 	rm -rf build/ \
 	       dist/ \
 	       MANIFEST \
