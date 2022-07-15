@@ -72,9 +72,11 @@ spec:
 	> $(PROJECT).spec
 
 srpm: source spec
-	test -z "$(outdir)" && outdir="$${PWD}/dist/"; \
-	cp -a ../.copr/Makefile $${outdir}/; \
-	rpmbuild --define="_sourcedir $${outdir}" \
+	srcdir="$${PWD}/dist"; \
+	test -z "$(outdir)" && outdir="$${srcdir}"; \
+	cp -a ../.copr/Makefile $${srcdir}/; \
+	rpmbuild \
+		--define="_sourcedir $${srcdir}" \
 		--define="_srcrpmdir $${outdir}" \
 		-bs $(PROJECT).spec
 

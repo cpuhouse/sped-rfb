@@ -42,7 +42,8 @@ rm -rf %{name}-%{version} || find %{name}-%{version}/ -exec chmod u+w {} \+ -del
 git config --global init.defaultBranch master
 git init && git annex init
 
-%autosetup -c -a 1
+%autosetup -c
+%{__cp} %{SOURCE1} .
 make clean-all
 make installer.properties
 make prep
