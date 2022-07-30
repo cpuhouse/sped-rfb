@@ -44,8 +44,8 @@ Antes de começar, verifique se o seu computador atende aos seguintes requisitos
 	```
 * O seu sistema está possui uma interface gráfica instalada: `KDE Plasma, Gnome, XFCE, etc.` 
 * O seu sistema GNU/Linux está executando uma distribuição compatível:
-	* [Ubuntu e derivados](https://ubuntu.com)(apenas 18.04 LTS / 20.04 LTS)
-	* [Fedora](https://getfedora.org)(36/Rawhide)
+	* [Ubuntu e derivados](https://ubuntu.com) (apenas 18.04 LTS / 20.04 LTS)
+	* [Fedora](https://getfedora.org) (36/Rawhide)
 <!--
 	* [Debian](https://debian.org)(apenas instalação manual de pacotes - não testado)
 	* [Rocky Linux](https://rockylinux.org)(ainda não suportado)
@@ -76,7 +76,7 @@ Trocar `<suite>` pelo codename da versão do Ubuntu/derivado que você usa. No m
 Fedora:
 Execute os seguintes comandos em seu terminal:
 ```
-sudo dnf copr enable cpuhouse/sped
+sudo dnf copr enable cpuhouse/sped-rfb
 sudo dnf install sped-*
 ```
 <!--
