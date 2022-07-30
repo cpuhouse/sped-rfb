@@ -107,5 +107,6 @@ changelog: clean-all
 	dch -M -U -D stable -u low
 	sh ./update-sources
 
+.PHONY: update-sources
 update-sources:
 	sh ./update-sources
