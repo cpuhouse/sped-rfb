@@ -25,7 +25,7 @@ A Receita Federal do Brasil fornece aplicativos para a geração e validação d
 
 |Componente           |Descrição                            |Versão   |Pacotes      |
 |---------------------|-------------------------------------|---------|-------------|
-|Sped Fiscal          |Gerador de EFD ICMS/IPI              | 2.8.4   |DEB          |
+|Sped Fiscal          |Gerador de EFD ICMS/IPI              | 2.8.5   |DEB|RPM      |
 |Sped Contribuições   |Gerador de EFD PIS/COFINS            | 5.0.2   |DEB          |
 |Sped Contábil        |Validador de ECD                     | 9.0.4   |DEB          |
 |Sped Contábil ECF    |Validador de ECF                     | 8.0.4   |DEB          |
@@ -45,9 +45,9 @@ Antes de começar, verifique se o seu computador atende aos seguintes requisitos
 * O seu sistema está possui uma interface gráfica instalada: `KDE Plasma, Gnome, XFCE, etc.` 
 * O seu sistema GNU/Linux está executando uma distribuição compatível:
 	* [Ubuntu e derivados](https://ubuntu.com)(apenas 18.04 LTS / 20.04 LTS)
+	* [Fedora](https://getfedora.org)(36/Rawhide)
 <!--
 	* [Debian](https://debian.org)(apenas instalação manual de pacotes - não testado)
-	* [Fedora](https://getfedora.org)(ainda não suportado)
 	* [Rocky Linux](https://rockylinux.org)(ainda não suportado)
 	* [Alma Linux](https://almalinux.org)(ainda não suportado)
 	* [CentOS Stream](https://centos.org)(ainda não suportado)
@@ -73,6 +73,12 @@ Trocar `<suite>` pelo codename da versão do Ubuntu/derivado que você usa. No m
 * `focal - Ubuntu 20.04 LTS`
 * `bionic - Ubuntu 18.04 LTS`
 
+Fedora:
+Execute os seguintes comandos em seu terminal:
+```
+sudo dnf copr enable cpuhouse/sped
+sudo dnf install sped-*
+```
 <!--
 Fedora/RHEL e derivados (Rocky/Alma/CentOS/OL/AL):
 

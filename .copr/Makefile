@@ -14,7 +14,7 @@ RPM_BUILD_ARCH=x86_64
 SRC_ARCH=x64
 endif
 
-APPNAME=$(shell p=$(PROJECT); echo $${p##*-};)
+APPNAME=$(shell echo $(PROJECT) | sed 's/.*-//')
 BUILDIR=$(CURDIR)/build
 DESTDIR=/opt/sped/$(APPNAME)
 
@@ -45,8 +45,7 @@ installer.properties: clean
 	rm -rf installer.properties
 	@echo INSTALL_PATH=./debian/$(PROJECT)$(DESTDIR) > installer.properties
 
-prep: clean
-	sh ./update-sources
+prep: clean update-sources
 	SRC_ARCH=$(SRC_ARCH) DESTDIR=$(DESTDIR) \
 		 make -f debian/rules override_dh_prep
 
@@ -96,7 +95,7 @@ clean: builddeps
 	dh_clean || :
 
 clean-all: clean
-	git annex drop
+	git annex drop || :
 	rm -rf ../$(PROJECT)*_*.deb \
 	       ../$(PROJECT)_*.dsc \
 	       ../$(PROJECT)_*.changes \
@@ -106,4 +105,7 @@ clean-all: clean
 
 changelog: clean-all
 	dch -M -U -D stable -u low
+	sh ./update-sources
+
+update-sources:
 	sh ./update-sources

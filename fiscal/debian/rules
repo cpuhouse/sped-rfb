@@ -7,7 +7,7 @@ RM_RF=rm -rf
 PROJECT=$(shell grep -m1 -iE '^Source:' debian/control | awk '{print $$2}')
 VERSION=$(shell grep -m1 -iE "^$(PROJECT)\ \(.*\)" debian/changelog | cut -d\( -f2 | cut -d\) -f1)
 SOURCEJAR=sources/PVA_EFD_linux-$(VERSION)_$(SRC_ARCH).jar
-APPNAME=$(shell p=$(PROJECT); echo $${p##*-};)
+APPNAME=$(shell echo $(PROJECT) | sed 's/.*-//')
 APPBIN=fiscalpva
 
 JAVA=$(shell readlink -es `which java`)
