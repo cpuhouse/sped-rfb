@@ -25,10 +25,10 @@ BuildRequires:		java-1.8.0-openjdk-headless
 
 Conflicts:		mariadb-server
 Provides:		PVA_EFD = %{version}
-Requires:		python3-distro
 Requires:		desktop-file-utils
-Requires:		libnsl.i686 
-Requires:		libxcrypt-compat.i686
+Requires:		libnsl(x86-32) 
+Requires:		libxcrypt-compat(x86-32)
+Requires:		python3-distro
 
 %description
 This package provides the generator for the Digital Tax Bookkeeping
