@@ -49,7 +49,7 @@ prep: clean update-sources
 	SRC_ARCH=$(SRC_ARCH) DESTDIR=$(DESTDIR) \
 		 make -f debian/rules override_dh_prep
 
-source: clean
+source: clean update-sources
 	mkdir dist
 	cd dist && \
 	dpkg-source \
