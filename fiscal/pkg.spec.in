@@ -1,8 +1,10 @@
+%define _build_id_links none
+
 %global pkg_name	__PROJECT__
 %global pkg_version	__VERSION__
 %global pkg_release	1
 
-%define appname         __APPNAME__
+%global appname         __APPNAME__
 
 Name:           	%{pkg_name}
 Version:        	%{pkg_version}
@@ -50,8 +52,6 @@ make prep
 
 
 %install
-rm -rf %{buildroot}
-
 %{__mkdir_p} %{buildroot}%{_bindir}/
 %{__mkdir_p} %{buildroot}%{_datadir}/applications/
 %{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
