@@ -16,7 +16,7 @@ Depends: ${misc:Depends},
          debconf (>= 0.5.00)
 Suggests: openjdk-8-jre-headless
 Priority: optional
-Description: Brazilian SPED EFD-Taxes (PIS/Cofins) generator
+Description: Brazilian SPED EFD-Contributions (PIS/Cofins) generator
  This package provides the generator for the Digital Tax Bookkeeping
  of taxes levied on Revenue (EFD PIS/Cofins) and is part of the 
  Brazilian Public Digital Bookkeeping System (SPED).

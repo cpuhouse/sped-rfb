@@ -1,0 +1,104 @@
+%define _build_id_links	none
+
+%global pkg_name	__PROJECT__
+%global pkg_version	__VERSION__
+%global pkg_release	1
+
+%global appname         __APPNAME__
+
+Name:           	%{pkg_name}
+Version:        	%{pkg_version}
+Release:        	%{pkg_release}%{?dist}
+Summary:        	Brazilian SPED EFD-Contributions (PIS/Cofins) generator
+
+License:        	GPL-2+
+URL:            	http://sped.rfb.gov.br/
+
+Source0:  		%{pkg_name}_%{pkg_version}.tar.xz
+Source1:		Makefile
+
+AutoReq:		no
+BuildArch:		x86_64
+BuildConflicts: 	%{name}
+BuildRequires:		debhelper > 10
+BuildRequires:		devscripts
+BuildRequires:		git-annex
+BuildRequires:		java-1.8.0-openjdk-headless
+
+Conflicts:		mariadb-server
+Provides:		EFDContribuicoes = %{version}
+Provides:		EFD(PIS/Cofins) = %{version}
+Requires:		desktop-file-utils
+Requires:		libnsl(x86-32) 
+Requires:		libxcrypt-compat(x86-32)
+Requires:		python3-distro
+
+%description
+This package provides the generator for the Digital Tax Bookkeeping
+of taxes levied on Revenue (EFD PIS/COFINS) and is part of the
+Brazilian Public Digital Bookkeeping System (SPED).
+
+
+%prep
+rm -rf %{name}-%{version} || find %{name}-%{version}/ -exec chmod u+w {} \+ -delete
+
+git config --global init.defaultBranch master
+git init && git annex init
+
+%autosetup -c
+%{__cp} %{SOURCE1} .
+make clean-all
+make installer.properties
+make prep
+
+
+%install
+%{__mkdir_p} %{buildroot}%{_bindir}/
+%{__mkdir_p} %{buildroot}%{_datadir}/applications/
+%{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
+%{__mkdir_p} %{buildroot}%{_datadir}/fonts/truetype/
+%{__mkdir_p} %{buildroot}%{_docdir}/%{name}/
+%{__mkdir_p} %{buildroot}%{_sysconfdir}/default/
+%{__mkdir_p} %{buildroot}/opt/
+
+cp -a debian/%{pkg_name}/opt %{buildroot}/
+%{__install} -D debian/copyright %{buildroot}%{_docdir}/%{name}/license.txt
+%{__install} -D sources/piscofinspva %{buildroot}/usr/bin/
+%{__install} -D sources/br.gov.serpro.sped.piscofinspva.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
+%{__install} -D sources/br.gov.serpro.sped.piscofinspva.desktop %{buildroot}%{_datadir}/applications/
+%{__install} -D sources/Arial.ttf %{buildroot}%{_datadir}/fonts/truetype/
+echo "#INTERNAL_JRE=false" > %{buildroot}%{_sysconfdir}/default/sped-%{appname}
+
+%{__rm} -rf %{buildroot}/opt/sped/%{appname}/Uninstaller
+
+
+%files
+%{_bindir}/piscofinspva
+%{_datadir}/applications/br.gov.serpro.sped.piscofinspva.desktop
+%{_datadir}/icons/hicolor/128x128/apps/br.gov.serpro.sped.piscofinspva.png
+%{_datadir}/fonts/truetype/Arial.ttf
+%{_docdir}/%{name}/license.txt
+%{_sysconfdir}/default/sped-%{appname}
+/opt/sped/%{appname}/
+
+
+%post
+if [ $1 == 1 ]; then
+  if ! getent group | grep -q "^sped:"; then
+    groupadd --system --force sped >/dev/null 2>&1 || :
+  fi
+
+  chown -R root:sped /opt/sped/piscofins
+  chmod -R g+rwx /opt/sped/piscofins
+
+  update-desktop-database || :
+fi
+
+
+%postun
+if [ $1 == 0 ]; then
+  rm -rf /opt/sped/piscofins > /dev/null 2>&1
+fi
+
+
+%changelog
