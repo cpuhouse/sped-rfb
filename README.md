@@ -12,23 +12,23 @@ O SPED, abreviação de **Sistema Público de Escrituração Digital** tem como 
 
 O projeto é composto pelas seguintes bases:
 
--   [EFD – Escrituração Fiscal Digital]();
+- [EFD – Escrituração Fiscal Digital]();
 	- [EFD ICMS/IPI]();
 	- [EFD PIS/COFINS (Contribuições)]();
--   [ECD – Escrituração Contábil Digital]();
--   [ECF – Escrituração Contábil Fiscal]();
--   [NF-e – Nota Fiscal Eletrônica]();
--   [CT-e - Conhecimento de Transporte Eletrônico]().
--   [eSocial]() - em fase de implementação.
+- [ECD – Escrituração Contábil Digital]();
+- [ECF – Escrituração Contábil Fiscal]();
+- [NF-e – Nota Fiscal Eletrônica]();
+- [CT-e - Conhecimento de Transporte Eletrônico]().
+- [eSocial]() - em fase de implementação.
 
 A Receita Federal do Brasil fornece aplicativos para a geração e validação de arquivos de transferência eletrônica para as bases do SPED de acordo com a tabela a seguir:
 
 |Componente           |Descrição                            |Versão   |Pacotes      |
 |---------------------|-------------------------------------|---------|-------------|
 |Sped Fiscal          |Gerador de EFD ICMS/IPI              | 2.8.5   |DEB,RPM      |
-|Sped Contribuições   |Gerador de EFD PIS/COFINS            | 5.0.2   |DEB          |
-|Sped Contábil        |Validador de ECD                     | 9.0.4   |DEB          |
-|Sped Contábil ECF    |Validador de ECF                     | 8.0.4   |DEB          |
+|Sped Contribuições   |Gerador de EFD PIS/COFINS            | 5.0.2   |DEB,RPM      |
+|Sped Contábil        |Validador de ECD                     | 10.0.0  |DEB,RPM      |
+|Sped Contábil ECF    |Validador de ECF                     | 8.0.4   |DEB,RPM      |
 |ReceitaNet¹          |Transmissor de declarações IRPJ/IRPF | 1.24    |DEB,RPM,JAR  |
 |ReceitaNetBX¹        |Transmissor de arquivos das bases RFB| 1.9.18  |JAVA SFX     |
 |ReceitaNetBX Serviço¹|Serviço do ReceitaNetBX              | 1.9.18  |JAVA SFX     |
@@ -45,7 +45,7 @@ Antes de começar, verifique se o seu computador atende aos seguintes requisitos
 * O seu sistema está possui uma interface gráfica instalada: `KDE Plasma, Gnome, XFCE, etc.` 
 * O seu sistema GNU/Linux está executando uma distribuição compatível:
 	* [Ubuntu e derivados](https://ubuntu.com) (apenas 18.04 LTS / 20.04 LTS)
-	* [Fedora](https://getfedora.org) (36/Rawhide)
+	* [Fedora](https://getfedora.org) (36+/Rawhide)
 <!--
 	* [Debian](https://debian.org)(apenas instalação manual de pacotes - não testado)
 	* [Rocky Linux](https://rockylinux.org)(ainda não suportado)
@@ -77,7 +77,7 @@ Fedora:
 Execute os seguintes comandos em seu terminal:
 ```
 sudo dnf copr enable cpuhouse/sped-rfb
-sudo dnf install sped-*
+sudo dnf install --refresh sped-*
 ```
 <!--
 Fedora/RHEL e derivados (Rocky/Alma/CentOS/OL/AL):
