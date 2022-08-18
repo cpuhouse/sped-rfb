@@ -1,11 +1,11 @@
 #!/bin/bash
 
-[ -f /etc/default/sped-ecf ] && \
-	. /etc/default/sped-ecf
+[ -f /etc/default/sped-irpj ] && \
+	. /etc/default/sped-irpj
 
 INTERNAL_JRE=${INTERNAL_JRE:=true}
 
-APP_HOME=/opt/sped/ecf
+APP_HOME=/opt/sped/irpj
 
 DISTRO_ID=$(python3 -m distro | awk '/Name:/ {print $2}')
 case $DISTRO_ID in

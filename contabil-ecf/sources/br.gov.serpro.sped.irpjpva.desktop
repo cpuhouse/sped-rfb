@@ -1,13 +1,13 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=SPED ECF
-Name[pt_BR]=SPED ECF
-GenericName=Fiscal Accouting Bookkeeping (ECF) Validator
-GenericName[pt_BR]=Validador de Escrituração Contábil Fiscal (ECF)
+Name=SPED ECF/IRPJ
+Name[pt_BR]=SPED ECF/IRPJ
+GenericName=Fiscal Accouting Bookkeeping (ECF/IRPJ) Validator
+GenericName[pt_BR]=Validador de Escrituração Contábil Fiscal (ECF/IRPJ)
 Exec=/usr/bin/irpjpva
 Icon=br.gov.serpro.sped.irpjpva
-Path=/opt/sped/ecf
+Path=/opt/sped/irpj
 Terminal=false
 StartupNotify=true
 Categories=Office;Finance;

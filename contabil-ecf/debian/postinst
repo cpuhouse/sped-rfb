@@ -1,5 +1,5 @@
 #!/bin/sh
-# postinst script for sped-contabil-ecf
+# postinst script for sped-irpj
 #
 # see: dh_installdeb(1)
 
@@ -27,8 +27,8 @@ case "$1" in
         addgroup --system --quiet sped
     fi
 
-    chown -R root:sped /opt/sped/ecf
-    chmod -R g+rwx /opt/sped/ecf
+    chown -R root:sped /opt/sped/irpj
+    chmod -R g+rwx /opt/sped/irpj
 
     /usr/bin/update-desktop-database || :
   ;;
