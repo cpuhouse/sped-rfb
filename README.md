@@ -25,7 +25,7 @@ A Receita Federal do Brasil fornece aplicativos para a geração e validação d
 
 |Componente           |Descrição                            |Versão   |Pacotes      |
 |---------------------|-------------------------------------|---------|-------------|
-|Sped Fiscal          |Gerador de EFD ICMS/IPI              | 3.0.4   |DEB,RPM      |
+|Sped Fiscal          |Gerador de EFD ICMS/IPI              | 3.0.6   |DEB,RPM      |
 |Sped Contribuições   |Gerador de EFD PIS/COFINS            | 5.0.2   |DEB,RPM      |
 |Sped Contábil        |Validador de ECD                     | 10.1.0  |DEB,RPM      |
 |Sped Contábil ECF    |Validador de ECF                     | 9.0.1   |DEB,RPM      |
