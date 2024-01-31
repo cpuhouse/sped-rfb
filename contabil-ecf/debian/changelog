@@ -1,3 +1,9 @@
+sped-irpj (10.0.2) stable; urgency=low
+
+  * Version 10.0.2
+
+ -- Cpuhouse Packaging System <packaging@cpuhouse.com.br>  Wed, 31 Jan 2024 10:46:02 -0300
+
 sped-irpj (9.0.3) stable; urgency=low
 
   * Version 9.0.3
