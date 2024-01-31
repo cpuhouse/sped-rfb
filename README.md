@@ -25,13 +25,13 @@ A Receita Federal do Brasil fornece aplicativos para a geração e validação d
 
 |Componente           |Descrição                            |Versão   |Pacotes      |
 |---------------------|-------------------------------------|---------|-------------|
-|Sped Fiscal          |Gerador de EFD ICMS/IPI              | 3.0.6   |DEB,RPM      |
+|Sped Fiscal          |Gerador de EFD ICMS/IPI              | 4.0.0   |DEB,RPM      |
 |Sped Contribuições   |Gerador de EFD PIS/COFINS            | 5.1.0   |DEB,RPM      |
 |Sped Contábil        |Validador de ECD                     | 10.1.8  |DEB,RPM      |
-|Sped Contábil ECF    |Validador de ECF                     | 9.0.3   |DEB,RPM      |
-|ReceitaNet¹          |Transmissor de declarações IRPJ/IRPF | 1.24    |DEB,RPM,JAR  |
-|ReceitaNetBX¹        |Transmissor de arquivos das bases RFB| 1.9.18  |JAVA SFX     |
-|ReceitaNetBX Serviço¹|Serviço do ReceitaNetBX              | 1.9.18  |JAVA SFX     |
+|Sped Contábil ECF    |Validador de ECF                     | 10.0.2  |DEB,RPM      |
+|ReceitaNet¹          |Transmissor de declarações IRPJ/IRPF | 1.31    |DEB,RPM,JAR  |
+|ReceitaNetBX¹        |Transmissor de arquivos das bases RFB| 1.9.20  |JAVA SFX     |
+|ReceitaNetBX Serviço¹|Serviço do ReceitaNetBX              | 1.9.20  |JAVA SFX     |
 
 [¹ Pacotes fornecidos pela RFB](https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanet)
 
@@ -44,8 +44,8 @@ Antes de começar, verifique se o seu computador atende aos seguintes requisitos
 	```
 * O seu sistema está possui uma interface gráfica instalada: `KDE Plasma, Gnome, XFCE, etc.` 
 * O seu sistema GNU/Linux está executando uma distribuição compatível:
-	* [Ubuntu e derivados](https://ubuntu.com) (apenas 18.04 LTS / 20.04 LTS)
-	* [Fedora](https://getfedora.org) (36+/Rawhide)
+	* [Ubuntu e derivados](https://ubuntu.com) (18.04 LTS / 20.04 LTS/ 22.04 LTS)
+	* [Fedora](https://getfedora.org) (38+/Rawhide)
 <!--
 	* [Debian](https://debian.org)(apenas instalação manual de pacotes - não testado)
 	* [Rocky Linux](https://rockylinux.org)(ainda não suportado)
@@ -70,6 +70,7 @@ sudo apt update && apt install sped-*
 ```
 Trocar `<suite>` pelo codename da versão do Ubuntu/derivado que você usa. No momento apenas as seguintes suites estão disponíveis:
 
+* `jammy - Ubuntu 22.04 LTS`
 * `focal - Ubuntu 20.04 LTS`
 * `bionic - Ubuntu 18.04 LTS`
 
