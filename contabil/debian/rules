@@ -6,7 +6,7 @@ RM_RF=rm -rf
 
 PROJECT=$(shell grep -m1 -iE '^Source:' debian/control | awk '{print $$2}')
 VERSION=$(shell grep -m1 -iE "^$(PROJECT)\ \(.*\)" debian/changelog | cut -d\( -f2 | cut -d\) -f1)
-SOURCEJAR=sources/SPEDContabil_linux_$(SRC_ARCH)-$(VERSION).jar
+SOURCE=sources/SpedContabil_linux_$(SRC_ARCH)-$(VERSION).sh
 APPNAME=$(shell echo $(PROJECT) | sed 's/.*-//')
 APPBIN=contabilpva
 
@@ -18,7 +18,7 @@ JAVA=$(shell readlink -es `which java`)
 override_dh_prep:
 	dh_prep
 	git annex get
-	$(JAVA) -Duser.home=/tmp -jar $(SOURCEJAR) -options installer.properties
+	sh $(SOURCE) -q -dir $(shell pwd)/debian/sped-$(APPNAME)/opt/sped/contabil
 
 override_dh_auto_build:
 

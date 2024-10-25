@@ -3,5 +3,5 @@
 url="https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedContabil"
 version=$(head -1 debian/changelog | awk -F"[()]" '{print $2}')
 
-rm -f sources/SPEDContabil_linux_x64-*
-git annex addurl --file sources/SPEDContabil_linux_x64-${version}.jar $url/SPEDContabil_linux_x64-${version}.jar
+rm -f sources/SpedContabil_linux_x86_64-*
+git annex addurl --file sources/SpedContabil_linux_x64-${version}.sh $url/SpedContabil_linux_x86_64-${version}.sh

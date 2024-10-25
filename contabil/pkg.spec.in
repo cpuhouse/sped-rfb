@@ -1,3 +1,6 @@
+%global debug_package %{nil}
+%global source_date_epoch_from_changelog 0
+
 %define _build_id_links none
 
 %global pkg_name	__PROJECT__
@@ -23,7 +26,6 @@ BuildConflicts: 	%{name}
 BuildRequires:		debhelper > 10
 BuildRequires:		devscripts
 BuildRequires:		git-annex
-BuildRequires:		java-1.8.0-openjdk-headless
 
 Conflicts:		mariadb-server
 Provides:		SPED(ECD) = %{version}
@@ -48,8 +50,10 @@ git init && git annex init
 %autosetup -c
 %{__cp} %{SOURCE1} .
 make clean-all
-make installer.properties
 make prep
+
+# OVerride program caller
+%{__mv} -f debian/%{pkg_name}/opt/sped/contabil/SpedContabil sources/contabilpva
 
 
 %install
@@ -57,7 +61,7 @@ make prep
 %{__mkdir_p} %{buildroot}%{_datadir}/applications/
 %{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
 %{__mkdir_p} %{buildroot}%{_docdir}/%{name}/
-%{__mkdir_p} %{buildroot}%{_sysconfdir}/default/
+#{__mkdir_p} %{buildroot}%{_sysconfdir}/default/
 %{__mkdir_p} %{buildroot}/opt/
 
 cp -a debian/%{pkg_name}/opt %{buildroot}/
@@ -65,9 +69,13 @@ cp -a debian/%{pkg_name}/opt %{buildroot}/
 %{__install} -D sources/contabilpva %{buildroot}/usr/bin/
 %{__install} -D sources/br.gov.serpro.sped.contabilpva.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
 %{__install} -D sources/br.gov.serpro.sped.contabilpva.desktop %{buildroot}%{_datadir}/applications/
-echo "#INTERNAL_JRE=false" > %{buildroot}%{_sysconfdir}/default/sped-%{appname}
+#echo "#INTERNAL_JRE=false" > %{buildroot}%{_sysconfdir}/default/sped-%{appname}
 
-%{__rm} -rf %{buildroot}/opt/sped/%{appname}/Uninstaller
+%{__rm} -rf \
+  %{buildroot}/opt/sped/%{appname}/SpedContabil.exe \
+  %{buildroot}/opt/sped/%{appname}/*.desktop \
+  %{buildroot}/opt/sped/%{appname}/uninstall
+  #{buildroot}/opt/sped/%{appname}/.install4j \
 
 
 %files
@@ -75,7 +83,7 @@ echo "#INTERNAL_JRE=false" > %{buildroot}%{_sysconfdir}/default/sped-%{appname}
 %{_datadir}/applications/br.gov.serpro.sped.contabilpva.desktop
 %{_datadir}/icons/hicolor/128x128/apps/br.gov.serpro.sped.contabilpva.png
 %{_docdir}/%{name}/license.txt
-%{_sysconfdir}/default/sped-%{appname}
+#{_sysconfdir}/default/sped-#{appname}
 /opt/sped/%{appname}/
 
 
