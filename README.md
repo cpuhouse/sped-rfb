@@ -25,10 +25,10 @@ A Receita Federal do Brasil fornece aplicativos para a geração e validação d
 
 |Componente           |Descrição                            |Versão   |Pacotes      |
 |---------------------|-------------------------------------|---------|-------------|
-|Sped Fiscal          |Gerador de EFD ICMS/IPI              | 4.0.0   |DEB,RPM      |
-|Sped Contribuições   |Gerador de EFD PIS/COFINS            | 5.1.0   |DEB,RPM      |
-|Sped Contábil        |Validador de ECD                     | 10.1.8  |DEB,RPM      |
-|Sped Contábil ECF    |Validador de ECF                     | 10.0.2  |DEB,RPM      |
+|Sped Fiscal          |Gerador de EFD ICMS/IPI              | 4.0.7   |DEB,RPM      |
+|Sped Contribuições   |Gerador de EFD PIS/COFINS            | 5.1.1   |DEB,RPM      |
+|Sped Contábil        |Validador de ECD                     | 10.2.2  |DEB,RPM      |
+|Sped Contábil ECF    |Validador de ECF                     | 10.0.13 |DEB,RPM      |
 |ReceitaNet¹          |Transmissor de declarações IRPJ/IRPF | 1.31    |DEB,RPM,JAR  |
 |ReceitaNetBX¹        |Transmissor de arquivos das bases RFB| 1.9.20  |JAVA SFX     |
 |ReceitaNetBX Serviço¹|Serviço do ReceitaNetBX              | 1.9.20  |JAVA SFX     |
@@ -44,13 +44,12 @@ Antes de começar, verifique se o seu computador atende aos seguintes requisitos
 	```
 * O seu sistema está possui uma interface gráfica instalada: `KDE Plasma, Gnome, XFCE, etc.` 
 * O seu sistema GNU/Linux está executando uma distribuição compatível:
-	* [Ubuntu e derivados](https://ubuntu.com) (18.04 LTS / 20.04 LTS/ 22.04 LTS)
-	* [Fedora](https://getfedora.org) (38+/Rawhide)
+	* [Ubuntu e derivados](https://ubuntu.com) (20.04 LTS / 22.04 LTS / 24.04 LTS)
+	* [Fedora](https://getfedora.org) (39+ / Rawhide)
 <!--
 	* [Debian](https://debian.org)(apenas instalação manual de pacotes - não testado)
 	* [Rocky Linux](https://rockylinux.org)(ainda não suportado)
 	* [Alma Linux](https://almalinux.org)(ainda não suportado)
-	* [CentOS Stream](https://centos.org)(ainda não suportado)
 	* [Oracle Linux (OL)](https://www.oracle.com/br/linux/)(ainda não suportado)
 	* [Amazon Linux (AL)](https://aws.amazon.com/amazon-linux/)(ainda não suportado)
 	* [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/pt-br/technologies/linux-platforms/enterprise-linux)(ainda não suportado)
@@ -70,9 +69,9 @@ sudo apt update && apt install sped-*
 ```
 Trocar `<suite>` pelo codename da versão do Ubuntu/derivado que você usa. No momento apenas as seguintes suites estão disponíveis:
 
+* `noble - Ubuntu 24.04 LTS`
 * `jammy - Ubuntu 22.04 LTS`
 * `focal - Ubuntu 20.04 LTS`
-* `bionic - Ubuntu 18.04 LTS`
 
 Fedora:
 Execute os seguintes comandos em seu terminal:
