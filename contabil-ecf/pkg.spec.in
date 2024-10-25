@@ -1,3 +1,6 @@
+%global debug_package %{nil}
+%global source_date_epoch_from_changelog 0
+
 %define _build_id_links none
 
 %global pkg_name	__PROJECT__
