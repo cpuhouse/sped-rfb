@@ -9,12 +9,13 @@ BUILD_ARCH=i386
 RPM_BUILD_ARCH=i686
 SRC_ARCH=x86
 else
-BUILD_ARCH=amd64
+BUILD_ARCH=x86_64
 RPM_BUILD_ARCH=x86_64
 SRC_ARCH=x64
 endif
 
 APPNAME=$(shell echo $(PROJECT) | sed 's/.*-//')
+
 BUILDIR=$(CURDIR)/build
 DESTDIR=/opt/sped/$(APPNAME)
 
@@ -46,10 +47,10 @@ installer.properties: clean
 	@echo INSTALL_PATH=./debian/$(PROJECT)$(DESTDIR) > installer.properties
 
 prep: clean update-sources
-	SRC_ARCH=$(SRC_ARCH) DESTDIR=$(DESTDIR) \
+	BUILD_ARCH=$(BUILD_ARCH) SRC_ARCH=$(SRC_ARCH) DESTDIR=$(DESTDIR) \
 		 make -f debian/rules override_dh_prep
 
-source: clean update-sources
+source: update-sources clean
 	mkdir dist
 	cd dist && \
 	dpkg-source \
@@ -57,7 +58,7 @@ source: clean update-sources
 		-Iinstaller.properties \
 		-Idist* \
 		-I*.spec* \
-		-I$(shell find sources/ -type l -exec ls -l {} \+ | cut -d\  -f 9) \
+		-I$(shell find sources/ -type l) \
 		-b ../ && \
 	cd ..
 
@@ -88,6 +89,7 @@ build-deb: installer.properties
 		 dpkg-buildpackage -i -I -rfakeroot -a $(BUILD_ARCH)
 
 clean: builddeps
+	find sources/ -xtype l -delete
 	rm -rf build/ \
 	       dist/ \
 	       MANIFEST \
@@ -96,6 +98,7 @@ clean: builddeps
 
 clean-all: clean
 	git annex drop || :
+	find sources/ -xtype l -delete
 	rm -rf ../$(PROJECT)*_*.deb \
 	       ../$(PROJECT)_*.dsc \
 	       ../$(PROJECT)_*.changes \

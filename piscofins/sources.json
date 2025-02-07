@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "x86_64" : {
+      "name": "EFD-Contribuicoes_linux",
+      "url": "https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA",
+      "file": "${name}_x86_64-${version}.sh",
+      "caller": "SpedContribuicoes"
+    }
+  }
+}

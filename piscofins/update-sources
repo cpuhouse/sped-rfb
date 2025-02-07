@@ -1,7 +1,23 @@
 #!/bin/sh
 
-url="https://servicos.receita.fazenda.gov.br/publico/programas/SpedPisCofinsPVA"
-version=$(head -1 debian/changelog | awk -F"[()]" '{print $2}')
+src_arch=${BUILD_ARCH:-x86_64}
 
-rm -f sources/EFDContribuicoes_linux_x64-*
-git annex addurl --file sources/EFDContribuicoes_linux_x64-${version}.jar $url/EFDContribuicoes_linux_x64-${version}.jar
+src_url=$(jq .sources.${src_arch}.url sources.json | sed 's/\"//g')
+src_name=$(jq .sources.${src_arch}.name sources.json | sed 's/\"//g')
+src_version=$(head -1 debian/changelog | awk -F"[()]" '{print $2}')
+
+src_file=$(
+jq .sources.${src_arch}.file sources.json \
+    | sed -e "s/\"//g;
+        s/\${arch}/${src_arch}/;
+	s/\${name}/${src_name}/;
+	s/\${version}/${src_version}/;"
+)
+
+rm -f sources/${src_name}_x{64,86,86_64}-*
+find sources/ -xtype l -delete
+
+git annex addurl \
+    --file \
+        sources/${src_file} \
+	${src_url}/${src_file}

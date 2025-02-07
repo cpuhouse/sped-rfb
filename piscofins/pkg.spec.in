@@ -1,13 +1,14 @@
 %global debug_package %{nil}
 %global source_date_epoch_from_changelog 0
 
-%define _build_id_links	none
+%define _build_id_links none
 
 %global pkg_name	__PROJECT__
 %global pkg_version	__VERSION__
 %global pkg_release	1
 
 %global appname         __APPNAME__
+%global appcaller       SpedContribuicoes
 
 Name:           	%{pkg_name}
 Version:        	%{pkg_version}
@@ -21,12 +22,12 @@ Source0:  		%{pkg_name}_%{pkg_version}.tar.xz
 Source1:		Makefile
 
 AutoReq:		no
-BuildArch:		x86_64
+BuildArch:		__BUILDARCH__
 BuildConflicts: 	%{name}
 BuildRequires:		debhelper > 10
 BuildRequires:		devscripts
 BuildRequires:		git-annex
-BuildRequires:		java-1.8.0-openjdk-headless
+BuildRequires:		jq
 
 Conflicts:		mariadb-server
 Provides:		EFDContribuicoes = %{version}
@@ -51,7 +52,6 @@ git init && git annex init
 %autosetup -c
 %{__cp} %{SOURCE1} .
 make clean-all
-make installer.properties
 make prep
 
 
@@ -59,31 +59,32 @@ make prep
 %{__mkdir_p} %{buildroot}%{_bindir}/
 %{__mkdir_p} %{buildroot}%{_datadir}/applications/
 %{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
-%{__mkdir_p} %{buildroot}%{_datadir}/fonts/truetype/
+%{__mkdir_p} %{buildroot}%{_datadir}/fonts/%{appname}/
 %{__mkdir_p} %{buildroot}%{_docdir}/%{name}/
-%{__mkdir_p} %{buildroot}%{_sysconfdir}/default/
 %{__mkdir_p} %{buildroot}/opt/
 
 cp -a debian/%{pkg_name}/opt %{buildroot}/
 %{__install} -D debian/copyright %{buildroot}%{_docdir}/%{name}/license.txt
-%{__install} -D sources/piscofinspva %{buildroot}/usr/bin/
-%{__install} -D sources/br.gov.serpro.sped.piscofinspva.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
-%{__install} -D sources/br.gov.serpro.sped.piscofinspva.desktop %{buildroot}%{_datadir}/applications/
-%{__install} -D sources/Arial.ttf %{buildroot}%{_datadir}/fonts/truetype/
-echo "#INTERNAL_JRE=false" > %{buildroot}%{_sysconfdir}/default/sped-%{appname}
+%{__install} -D sources/br.gov.serpro.sped.%{appname}pva.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
+%{__install} -D sources/br.gov.serpro.sped.%{appname}pva.desktop %{buildroot}%{_datadir}/applications/
+%{__install} -D sources/arial.ttf %{buildroot}%{_datadir}/fonts/%{appname}/
+%{__ln} -snf ../../opt/sped/%{appname}/%{appcaller} %{buildroot}/%{_bindir}/%{appname}pva
 
-%{__rm} -rf %{buildroot}/opt/sped/%{appname}/Uninstaller
+
+%{__rm} -rf \
+  %{buildroot}/opt/sped/%{appname}/%{appcaller}.exe \
+  %{buildroot}/opt/sped/%{appname}/*.desktop \
+  %{buildroot}/opt/sped/%{appname}/after_install.sh \
+  %{buildroot}/opt/sped/%{appname}/uninstall
 
 
 %files
-%{_bindir}/piscofinspva
-%{_datadir}/applications/br.gov.serpro.sped.piscofinspva.desktop
-%{_datadir}/icons/hicolor/128x128/apps/br.gov.serpro.sped.piscofinspva.png
-%{_datadir}/fonts/truetype/Arial.ttf
+%{_bindir}/%{appname}pva
+%{_datadir}/applications/br.gov.serpro.sped.%{appname}pva.desktop
+%{_datadir}/fonts/%{appname}/arial.ttf
+%{_datadir}/icons/hicolor/128x128/apps/br.gov.serpro.sped.%{appname}pva.png
 %{_docdir}/%{name}/license.txt
-%{_sysconfdir}/default/sped-%{appname}
 /opt/sped/%{appname}/
-
 
 %post
 if [ $1 == 1 ]; then
@@ -91,8 +92,8 @@ if [ $1 == 1 ]; then
     groupadd --system --force sped >/dev/null 2>&1 || :
   fi
 
-  chown -R root:sped /opt/sped/piscofins
-  chmod -R g+rwx /opt/sped/piscofins
+  chown -R root:sped /opt/sped/%{appname}
+  chmod -R g+rwx /opt/sped/%{appname}
 
   update-desktop-database || :
 fi
@@ -100,7 +101,7 @@ fi
 
 %postun
 if [ $1 == 0 ]; then
-  rm -rf /opt/sped/piscofins > /dev/null 2>&1
+  rm -rf /opt/sped/%{appname} > /dev/null 2>&1
 fi
 
 
