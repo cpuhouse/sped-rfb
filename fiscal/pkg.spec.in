@@ -26,7 +26,7 @@ BuildConflicts: 	%{name}
 BuildRequires:		debhelper > 10
 BuildRequires:		devscripts
 BuildRequires:		git-annex
-BuildRequires:		java-1.8.0-openjdk-headless
+BuildRequires:		java-openjdk-headless > 11 
 
 Conflicts:		mariadb-server
 Provides:		PVA_EFD = %{version}
