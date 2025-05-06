@@ -1,16 +1,21 @@
 #!/usr/bin/make -f
-SHELL=/bin/bash
+
+JAVA=$(shell readlink -es `which java`)
 INSTALL=install -v -D -oroot -groot -m0644
 INSTALL_D=install -v -d -oroot -groot -m0755
 RM_RF=rm -rf
 
 PROJECT=$(shell grep -m1 -iE '^Source:' debian/control | awk '{print $$2}')
 VERSION=$(shell grep -m1 -iE "^$(PROJECT)\ \(.*\)" debian/changelog | cut -d\( -f2 | cut -d\) -f1)
-SOURCEJAR=sources/PVA_EFD_linux-$(VERSION)_$(SRC_ARCH).jar
-APPNAME=$(shell echo $(PROJECT) | sed 's/.*-//')
-APPBIN=fiscalpva
+APPNAME=$(shell echo $(PROJECT) | sed -e 's/.*-//')
+PROGNAME=$(APPNAME)pva
 
-JAVA=$(shell readlink -es `which java`)
+INSTALLER=$(shell jq .sources.$(BUILD_ARCH).file sources.json | \
+   sed -e "s/\"//g; \
+       s/\$${name}/$(shell jq .sources.$(BUILD_ARCH).name sources.json | sed 's/\"//g')/; \
+       s/\$${version}/$(VERSION)/;" \
+)
+
 
 %:
 	dh $@
@@ -18,26 +23,25 @@ JAVA=$(shell readlink -es `which java`)
 override_dh_prep:
 	dh_prep
 	git annex get
-	$(JAVA) -Duser.home=/tmp -jar $(SOURCEJAR) -options installer.properties
+	sh sources/$(INSTALLER) -q -dir $(shell pwd)/debian/sped-$(APPNAME)/opt/sped/$(APPNAME)
 
 override_dh_auto_build:
 
 override_dh_install:
 	dh_install
 	$(INSTALL_D) debian/sped-$(APPNAME)/
-	$(INSTALL_D) debian/sped-$(APPNAME)/etc/default/
 	$(INSTALL_D) debian/sped-$(APPNAME)/usr/bin/
 	$(INSTALL_D) debian/sped-$(APPNAME)/usr/share/applications/
+	$(INSTALL_D) debian/sped-$(APPNAME)/usr/share/fonts/truetype/
 	$(INSTALL_D) debian/sped-$(APPNAME)/usr/share/icons/hicolor/128x128/apps/
-	$(RM_RF) debian/sped-$(APPNAME)$(DESTDIR)/Uninstaller
-	$(INSTALL) sources/$(APPBIN) debian/sped-$(APPNAME)/usr/bin/
-	$(INSTALL) sources/br.gov.serpro.sped.$(APPBIN).png debian/sped-$(APPNAME)/usr/share/icons/hicolor/128x128/apps/
-	$(INSTALL) sources/br.gov.serpro.sped.$(APPBIN).desktop debian/sped-$(APPNAME)/usr/share/applications/
-	echo "#INTERNAL_JRE=false" > debian/sped-$(APPNAME)/etc/default/sped-$(APPNAME)
+	$(RM_RF) ./$(DESTDIR)/Uninstaller
+	$(INSTALL) sources/$(PROGNAME) debian/sped-$(APPNAME)/usr/bin/
+	$(INSTALL) sources/br.gov.serpro.sped.$(PROGNAME).png debian/sped-$(APPNAME)/usr/share/icons/hicolor/128x128/apps/
+	$(INSTALL) sources/br.gov.serpro.sped.$(PROGNAME).desktop debian/sped-$(APPNAME)/usr/share/applications/
+	$(INSTALL) sources/arial.ttf debian/sped-$(APPNAME)/usr/share/fonts/truetype/
 
 override_dh_strip:
 
 override_dh_strip_nondeterminism:
 
 override_dh_shlibdeps:
-

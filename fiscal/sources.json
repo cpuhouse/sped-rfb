@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "x86_64" : {
+      "name": "SpedEFD_linux",
+      "url": "https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal",
+      "file": "${name}_x86_64-${version}.sh",
+      "caller": "SpedEFD"
+    }
+  }
+}

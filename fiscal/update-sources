@@ -3,5 +3,5 @@
 url="https://servicos.receita.fazenda.gov.br/publico/programas/Sped/SpedFiscal"
 version=$(head -1 debian/changelog | awk -F"[()]" '{print $2}')
 
-rm -f sources/PVA_EFD_linux-*
-git annex addurl --file sources/PVA_EFD_linux-${version}_x64.jar $url/PVA_EFD_linux-${version}_x64.jar
+rm -f sources/PVA_EFD_linux-* sources/SpedEFD_linux*
+git annex addurl --file sources/SpedEFD_linux_x86_64-${version}.sh $url/SpedEFD_linux_x86_64-${version}.sh
