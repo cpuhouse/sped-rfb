@@ -1,3 +1,9 @@
+sped-piscofins (6.0.8) stable; urgency=medium
+
+  * release 6.0.8
+
+ -- Cpuhouse Packaging System <packaging@cpuhouse.com.br>  Tue, 06 May 2025 14:42:20 -0300
+
 sped-piscofins (6.0.2) stable; urgency=low
 
   * release 6.0.2
